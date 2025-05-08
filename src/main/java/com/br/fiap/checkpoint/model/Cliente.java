@@ -1,6 +1,8 @@
 package com.br.fiap.checkpoint.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Cliente {
@@ -9,10 +11,14 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
+    @NotBlank(message = "Email é obrigatório")
+    @Email(message = "Email inválido")
     private String email;
 
+    @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
 
     // Getters e Setters
